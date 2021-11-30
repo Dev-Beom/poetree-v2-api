@@ -8,11 +8,11 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { CreateItemDto } from './dto/create-item.dto';
-import { ItemStatus } from './item-status.enum';
-import { Item } from './items.entity';
+import { CreateItemDto } from './dto';
+// import { ItemStatus } from './item-status.enum';
+import { Item } from '../entities/items.entity';
 import { ItemsService } from './items.service';
-import { ItemStatusValidationPipe } from './pipes/item-status-validation.pipe';
+// import { ItemStatusValidationPipe } from './pipes/item-status-validation.pipe';
 @Controller('items')
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
@@ -28,11 +28,11 @@ export class ItemsController {
   getItemById(@Param('id') id: number): Promise<Item> {
     return this.itemsService.getItemById(id);
   }
-  // @Post()
-  // @UsePipes(ValidationPipe)
-  // createBoard(@Body() createItemDto: CreateItemDto): Item {
-  //   return this.itemsService.createItem(createItemDto);
-  // }
+  @Post()
+  @UsePipes(ValidationPipe)
+  createItem(@Body() createItemDto: CreateItemDto): Promise<Item> {
+    return this.itemsService.createItem(createItemDto);
+  }
 
   // @Patch('/:id/status')
   // updateItemStatus(
