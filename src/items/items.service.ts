@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { v1 as uuid } from 'uuid';
 import { CreateItemDto } from './dto';
 import { ItemStatus } from './item-status.enum';
-import { Item } from './items.entity';
+import { Item } from '../entities/items.entity';
 import { ItemRepository } from './items.repository';
 
 @Injectable()
@@ -12,9 +12,19 @@ export class ItemsService {
     @InjectRepository(ItemRepository)
     private itemRepository: ItemRepository,
   ) {}
-  // getAllItems() {
-  //   return this.items;
-  // }
+
+  async createItem(createItemDto: CreateItemDto): Promise<Item> {
+    const { name, description } = createItemDto;
+
+    const item = this.itemRepository.create({
+      name,
+      description,
+      itemStatusId: 1,
+    });
+
+    await this.itemRepository.save(item);
+    return item;
+  }
   async getItemById(id: number): Promise<Item> {
     const found = await this.itemRepository.findOne(id);
     if (!found) {
