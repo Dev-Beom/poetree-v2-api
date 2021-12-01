@@ -1,11 +1,9 @@
-import { User } from 'src/entities/users.entity';
 import {
   BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -43,7 +41,7 @@ export class Item extends BaseEntity {
   sellerId: number;
 
   @Column({ default: null, nullable: true })
-  itemStatusId: number;
+  itemCodeId: number;
 
   @Column()
   point: number;
