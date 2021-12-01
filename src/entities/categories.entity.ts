@@ -18,7 +18,7 @@ export class Category extends BaseEntity {
   @Column()
   name: number;
 
-  @Column({ type: 'boolean' })
+  @Column({ default: 1 })
   isActive: boolean;
 
   @CreateDateColumn()

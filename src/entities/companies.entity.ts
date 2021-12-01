@@ -3,9 +3,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Bank } from './banks.entity';
+import { Fund } from './funds.entity';
 
 @Entity({ schema: 'crow', name: 'companies' })
 export class Company extends BaseEntity {
@@ -30,12 +35,13 @@ export class Company extends BaseEntity {
   @Column()
   accountNumber: number;
 
-  @Column()
-  bankId: number;
-
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => Bank)
+  @JoinColumn()
+  bank: Bank;
 }

@@ -24,15 +24,15 @@ export class ItemsController {
   //   return items;
   // }
 
-  @Get('/:id')
-  getItemById(@Param('id') id: number): Promise<Item> {
-    return this.itemsService.getItemById(id);
-  }
-  @Post()
-  @UsePipes(ValidationPipe)
-  createItem(@Body() createItemDto: CreateItemDto): Promise<Item> {
-    return this.itemsService.createItem(createItemDto);
-  }
+  //   @Get('/:id')
+  //   getItemById(@Param('id') id: number): Promise<Item> {
+  //     return this.itemsService.getItemById(id);
+  //   }
+  //   @Post()
+  //   @UsePipes(ValidationPipe)
+  //   createItem(@Body() createItemDto: CreateItemDto): Promise<Item> {
+  //     return this.itemsService.createItem(createItemDto);
+  //   }
 
   // @Patch('/:id/status')
   // updateItemStatus(

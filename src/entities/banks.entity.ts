@@ -18,7 +18,7 @@ export class Bank extends BaseEntity {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ default: 1 })
   isActive: boolean;
 
   @CreateDateColumn()
