@@ -3,17 +3,16 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { User } from './users.entity';
 
 @Entity({ schema: 'crow', name: 'funds' })
 export class Fund extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  userId: number;
 
   @Column()
   itemId: number;
@@ -26,4 +25,7 @@ export class Fund extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(() => User, (user) => user.funds)
+  user: User;
 }

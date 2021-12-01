@@ -13,18 +13,18 @@ export class ItemsService {
     private itemRepository: ItemRepository,
   ) {}
 
-  async createItem(createItemDto: CreateItemDto): Promise<Item> {
-    const { name, description } = createItemDto;
+  //   async createItem(createItemDto: CreateItemDto): Promise<Item> {
+  // const { name, description } = createItemDto;
 
-    const item = this.itemRepository.create({
-      name,
-      description,
-      itemStatusId: 1,
-    });
+  // const item = this.itemRepository.create({
+  //   name,
+  //   description,
+  //   itemStatusId: 1,
+  // });
 
-    await this.itemRepository.save(item);
-    return item;
-  }
+  //     await this.itemRepository.save(item);
+  //     return item;
+  //   }
   async getItemById(id: number): Promise<Item> {
     const found = await this.itemRepository.findOne(id);
     if (!found) {

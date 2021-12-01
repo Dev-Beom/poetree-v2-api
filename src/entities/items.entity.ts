@@ -19,26 +19,23 @@ export class Item extends BaseEntity {
   @Column()
   categoryId: number;
 
-  @Column('int', { name: 'userId' })
+  @Column('int')
   userId: number;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: false })
   isRecommended: boolean;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: false })
   isActive: boolean;
 
-  @Column()
+  @Column({ type: 'int' })
   targetPrice: number;
 
-  @Column()
+  @Column({ nullable: true })
   imageURL: string;
 
   @Column()
   description: string;
-
-  @Column()
-  sellerId: number;
 
   @Column({ default: null, nullable: true })
   itemCodeId: number;
@@ -52,10 +49,10 @@ export class Item extends BaseEntity {
   @Column()
   endsAt: Date;
 
-  @Column()
+  @Column({ default: 0 })
   investCount: number;
 
-  @Column()
+  @Column({ default: 0 })
   views: number;
 
   @CreateDateColumn()

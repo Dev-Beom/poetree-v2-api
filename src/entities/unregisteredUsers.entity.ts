@@ -7,8 +7,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ schema: 'crow', name: 'fundCodes' })
-export class FundCode extends BaseEntity {
+@Entity({ schema: 'crow', name: 'unregisteredUsers' })
+export class UnregisteredUser extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

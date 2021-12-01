@@ -4,9 +4,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { BlockedUser } from './blockdeUsers.entity';
 
 @Entity({ schema: 'crow', name: 'adminUsers' })
 export class AdminUser extends BaseEntity {
@@ -27,4 +29,7 @@ export class AdminUser extends BaseEntity {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @OneToMany(() => BlockedUser, (blockedUser) => blockedUser.adminUser)
+  blockedUsers: BlockedUser[];
 }

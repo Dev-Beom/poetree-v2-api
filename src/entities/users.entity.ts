@@ -4,9 +4,16 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Bank } from './banks.entity';
+import { BlockedUser } from './blockedUsers.entity';
+import { Fund } from './funds.entity';
 
 @Entity({ schema: 'crow', name: 'users' })
 export class User extends BaseEntity {
@@ -19,10 +26,10 @@ export class User extends BaseEntity {
   @Column('varchar', { name: 'email', unique: true, length: 30 })
   email: string;
 
-  @Column('varchar', { name: 'password', length: 100, select: false })
+  @Column('varchar', { name: 'password', length: 100 })
   password: string;
 
-  @Column()
+  @Column({ unique: true })
   phone: number;
 
   @Column()
@@ -31,41 +38,35 @@ export class User extends BaseEntity {
   @Column()
   loginProvider: string;
 
-  @Column()
+  @Column({ unique: true, nullable: true })
   ci: string;
 
-  @Column()
+  @Column({ unique: true, nullable: true })
   di: string;
 
-  @Column()
+  @Column({ unique: true, nullable: true })
   accountNumber: number;
 
-  @Column()
+  @Column({ nullable: true })
   accountName: string;
 
-  @Column()
-  bankId: number;
-
-  @Column()
+  @Column({ default: 0 })
   point: number;
 
-  @Column()
+  @Column({ nullable: true })
   companyId: number;
 
-  @Column()
+  @Column({ nullable: true })
   unregisteredUserId: number;
 
-  @Column({ type: 'boolean' })
+  @Column({ default: false })
   isBlocked: boolean;
 
-  @Column({ type: 'boolean' })
+  @Column({ default: false })
   isPush: boolean;
 
-  @Column({ type: 'boolean' })
+  @Column({ default: false })
   isSeller: boolean;
-
-  @Column()
-  lastLoginAt: Date;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -75,4 +76,14 @@ export class User extends BaseEntity {
 
   @DeleteDateColumn()
   deletedAt: Date | null;
+
+  @OneToOne(() => Bank)
+  @JoinColumn()
+  bank: Bank;
+
+  @OneToMany(() => BlockedUser, (blockedUser) => blockedUser.user)
+  blockedUsers: BlockedUser[];
+
+  @OneToMany(() => Fund, (fund) => fund.user)
+  funds: Fund[];
 }

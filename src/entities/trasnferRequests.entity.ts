@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity({ schema: 'crow', name: 'transferRequests' })
-export class TransferRequeest extends BaseEntity {
+export class TransferRequest extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
