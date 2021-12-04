@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { v1 as uuid } from 'uuid';
 import { CreateItemDto } from './dto';
 import { ItemStatus } from './item-status.enum';
-import { Item } from '../entities/items.entity';
+import { Item } from './entities/item.entity';
 import { ItemRepository } from './items.repository';
 
 @Injectable()

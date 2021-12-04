@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { CreateItemDto } from './dto';
 // import { ItemStatus } from './item-status.enum';
-import { Item } from '../entities/items.entity';
+import { Item } from './entities/item.entity';
 import { ItemsService } from './items.service';
 // import { ItemStatusValidationPipe } from './pipes/item-status-validation.pipe';
 @Controller('items')
