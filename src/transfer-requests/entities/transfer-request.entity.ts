@@ -11,7 +11,7 @@ import { User } from 'src/users/entities/user.entity';
 
 @Entity({ schema: 'crow', name: 'transferRequests' })
 export class TransferRequest extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
   @CreateDateColumn()

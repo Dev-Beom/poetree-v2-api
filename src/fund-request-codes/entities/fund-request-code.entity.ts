@@ -11,13 +11,13 @@ import { FundRequest } from 'src/fund-requests/entities/fund-request.entity';
 
 @Entity({ schema: 'crow', name: 'fundRequestCode' })
 export class FundRequestCode extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   code: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: number;
 
   @CreateDateColumn()
