@@ -9,7 +9,7 @@ const config: TypeOrmModuleOptions = {
   username: process.env.USERNAME,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
-  entities: [__dirname + '/**/*.entity.{js,ts}'],
+  entities: [__dirname + '/**/*.entity.ts'],
   migrations: [__dirname + '/src/migrations/*.ts'],
   cli: { migrationsDir: 'src/migrations' },
   autoLoadEntities: true,
