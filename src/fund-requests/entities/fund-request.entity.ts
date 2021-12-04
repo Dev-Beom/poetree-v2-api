@@ -13,10 +13,10 @@ import { Item } from 'src/items/entities/item.entity';
 
 @Entity({ schema: 'crow', name: 'fundRequests' })
 export class FundRequest extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'int' })
   point: number;
 
   @CreateDateColumn()

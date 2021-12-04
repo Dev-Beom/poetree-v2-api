@@ -13,19 +13,16 @@ import {
 
 @Entity({ schema: 'crow', name: 'transfers' })
 export class Transfer extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'int' })
   point: number;
 
-  @Column()
-  transferCodeId: number;
-
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   accountName: string;
 
-  @Column()
+  @Column({ type: 'int' })
   accounNumber: number;
 
   @Column()

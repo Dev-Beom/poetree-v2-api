@@ -12,22 +12,22 @@ import {
 
 @Entity({ schema: 'crow', name: 'unregisteredUsers' })
 export class UnregisteredUser extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: string;
 
-  @Column()
+  @Column('varchar', { unique: true, nullable: true })
   ci: string;
 
-  @Column()
+  @Column({ nullable: true })
   accountName: string;
 
-  @Column()
+  @Column({ unique: true, nullable: true })
   accountNumber: number;
 
-  @Column()
+  @Column({ type: 'varchar' })
   bankId: string;
 
   @Column()

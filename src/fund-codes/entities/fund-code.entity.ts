@@ -11,13 +11,13 @@ import { Fund } from 'src/funds/entities/fund.entity';
 
 @Entity({ schema: 'crow', name: 'fundCodes' })
 export class FundCode extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   code: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: string;
 
   @CreateDateColumn()

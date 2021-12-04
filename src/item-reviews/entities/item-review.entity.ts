@@ -12,16 +12,13 @@ import { User } from 'src/users/entities/user.entity';
 
 @Entity({ schema: 'crow', name: 'itemReviews' })
 export class ItemReview extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
-
-  @Column()
-  username: string;
 
   @Column({ type: 'decimal' })
   rate: number;
 
-  @Column()
+  @Column({ type: 'text' })
   review: string;
 
   @CreateDateColumn()

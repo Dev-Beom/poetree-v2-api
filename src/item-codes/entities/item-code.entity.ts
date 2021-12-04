@@ -11,13 +11,13 @@ import { Item } from 'src/items/entities/item.entity';
 
 @Entity({ schema: 'crow', name: 'itemCodes' })
 export class ItemCode extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   code: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: string;
 
   @CreateDateColumn()

@@ -11,13 +11,13 @@ import { TransferRequest } from 'src/transfer-requests/entities/transfer-request
 
 @Entity({ schema: 'crow', name: 'transferRequestCodes' })
 export class TransferRequestCode extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   code: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: number;
 
   @CreateDateColumn()

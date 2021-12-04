@@ -13,25 +13,28 @@ import { User } from 'src/users/entities/user.entity';
 
 @Entity({ schema: 'crow', name: 'companies' })
 export class Company extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: string;
 
-  @Column()
+  @Column({ type: 'int', unique: true, nullable: true })
   phone: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30, unique: true })
   email: string;
 
-  @Column()
+  @Column({ type: 'varchar', nullable: true })
+  address: string;
+
+  @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column()
+  @Column({ type: 'int', nullable: true })
   accountName: string;
 
-  @Column()
+  @Column({ type: 'int', unique: true, nullable: true })
   accountNumber: number;
 
   @CreateDateColumn()
@@ -40,7 +43,7 @@ export class Company extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => Bank, (bank) => bank.companies)
+  @ManyToOne(() => Bank, (bank) => bank.companies, { nullable: true })
   bank: Bank;
 
   @OneToMany(() => User, (users) => users.company)

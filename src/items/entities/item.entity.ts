@@ -18,10 +18,10 @@ import { User } from 'src/users/entities/user.entity';
 
 @Entity({ schema: 'crow', name: 'items' })
 export class Item extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: string;
 
   @Column({ type: 'boolean', default: false })
@@ -36,10 +36,10 @@ export class Item extends BaseEntity {
   @Column({ nullable: true })
   imageURL: string;
 
-  @Column()
+  @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column()
+  @Column({ type: 'int' })
   point: number;
 
   @Column()
@@ -48,10 +48,10 @@ export class Item extends BaseEntity {
   @Column()
   endsAt: Date;
 
-  @Column({ default: 0 })
+  @Column({ type: 'int', default: 0 })
   investCount: number;
 
-  @Column({ default: 0 })
+  @Column({ type: 'int', default: 0 })
   views: number;
 
   @CreateDateColumn()

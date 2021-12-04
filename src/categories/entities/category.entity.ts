@@ -11,16 +11,16 @@ import { Item } from 'src/items/entities/item.entity';
 
 @Entity({ schema: 'crow', name: 'categories' })
 export class Category extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   code: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: number;
 
-  @Column({ default: 1 })
+  @Column({ type: 'boolean', default: 1 })
   isActive: boolean;
 
   @CreateDateColumn()

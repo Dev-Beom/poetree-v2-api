@@ -13,16 +13,16 @@ import { Transfer } from 'src/transfers/entities/transfer.entity';
 
 @Entity({ schema: 'crow', name: 'banks' })
 export class Bank extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   code: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: string;
 
-  @Column({ default: 1 })
+  @Column({ type: 'boolean', default: 1 })
   isActive: boolean;
 
   @CreateDateColumn()

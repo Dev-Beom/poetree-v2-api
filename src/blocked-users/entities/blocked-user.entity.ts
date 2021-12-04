@@ -11,7 +11,7 @@ import { AdminUser } from 'src/admin-users/entities/admin-user.entity';
 
 @Entity({ schema: 'crow', name: 'blockedUsers' })
 export class BlockedUser extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
   @CreateDateColumn()

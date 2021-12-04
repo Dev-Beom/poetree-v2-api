@@ -12,7 +12,7 @@ import {
 
 @Entity({ schema: 'crow', name: 'funds' })
 export class Fund extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
   @CreateDateColumn()

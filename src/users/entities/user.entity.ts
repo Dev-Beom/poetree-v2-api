@@ -22,28 +22,31 @@ import { Item } from 'src/items/entities/item.entity';
 
 @Entity({ schema: 'crow', name: 'users' })
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column('varchar', { name: 'name', length: 30 })
+  @Column('varchar', { length: 30 })
   name: string;
 
-  @Column('varchar', { name: 'email', unique: true, length: 30 })
+  @Column('varchar', { unique: true, length: 30 })
   email: string;
 
-  @Column('varchar', { name: 'password', length: 100 })
+  @Column('varchar', { length: 100 })
   password: string;
 
-  @Column({ unique: true })
+  @Column('int', { unique: true, nullable: true })
   phone: number;
 
-  @Column()
+  @Column('varchar', { nullable: true })
   address: string;
 
-  @Column()
+  @Column('text', { nullable: true })
+  description: string;
+
+  @Column('varchar', { default: 'local' })
   loginProvider: string;
 
-  @Column({ unique: true, nullable: true })
+  @Column('varchar', { unique: true, nullable: true })
   ci: string;
 
   @Column({ unique: true, nullable: true })
@@ -55,10 +58,10 @@ export class User extends BaseEntity {
   @Column({ nullable: true })
   accountName: string;
 
-  @Column({ default: 0 })
+  @Column('int', { default: 0 })
   point: number;
 
-  @Column({ default: false })
+  @Column('boolean', { default: false })
   isBlocked: boolean;
 
   @Column({ default: false })
@@ -73,18 +76,19 @@ export class User extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date | null;
+  @DeleteDateColumn({ nullable: true })
+  deletedAt: Date;
 
-  @ManyToOne(() => Bank, (bank) => bank.users)
+  @ManyToOne(() => Bank, (bank) => bank.users, { nullable: true })
   bank: Bank;
 
-  @ManyToOne(() => Company, (company) => company.users)
+  @ManyToOne(() => Company, (company) => company.users, { nullable: true })
   company: Company;
 
   @ManyToOne(
     () => UnregisteredUser,
     (unregisteredUser) => unregisteredUser.users,
+    { nullable: true },
   )
   unregisteredUser: UnregisteredUser;
 

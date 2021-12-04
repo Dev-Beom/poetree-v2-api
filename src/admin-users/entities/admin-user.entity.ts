@@ -13,13 +13,13 @@ import { BlockedUser } from 'src/blocked-users/entities/blocked-user.entity';
 
 @Entity({ schema: 'crow', name: 'adminUsers' })
 export class AdminUser extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   name: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100 })
   password: string;
 
   @CreateDateColumn()
