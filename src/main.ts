@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
@@ -9,6 +10,13 @@ async function bootstrap() {
   await app.listen(port);
   console.log(`Listening on port ${port}`);
 
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
