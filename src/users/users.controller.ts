@@ -10,12 +10,7 @@ export class UsersController {
     return this.usersService.findUserById(id);
   }
   @Post()
-  create(@Body() userData: CreateUserDto) {
+  createUser(@Body() userData: CreateUserDto) {
     return this.usersService.createUser(userData);
-  }
-
-  @Get()
-  findAll() {
-    return `This action returns all itemCodes`;
   }
 }
