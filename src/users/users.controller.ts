@@ -7,10 +7,10 @@ export class UsersController {
 
   @Get()
   findUserById(@Body() id: number) {
-    return this.usersService.findUserById(id);
+    return this.usersService.findOneById(id);
   }
   @Post()
   createUser(@Body() userData: CreateUserDto) {
-    return this.usersService.createUser(userData);
+    return this.usersService.create(userData);
   }
 }
