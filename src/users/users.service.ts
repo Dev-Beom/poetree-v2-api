@@ -8,6 +8,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import { UserRepository } from './users.repository';
 import { hashPassword, LoginProvider } from '../utils/utils';
+
 @Injectable()
 export class UsersService {
   constructor(
@@ -16,7 +17,7 @@ export class UsersService {
   ) {}
 
   async findOneById(id: number): Promise<User> {
-    const user = this.userRepository.findOne(id);
+    const user = await this.userRepository.findOne(id);
     if (!user) {
       throw new NotFoundException(`user id ${id} not found`);
     }
@@ -24,7 +25,7 @@ export class UsersService {
   }
 
   async findOneByEmail(email: string): Promise<User> {
-    return this.userRepository.findOne({
+    return await this.userRepository.findOne({
       where: {
         email,
       },
@@ -49,8 +50,8 @@ export class UsersService {
     return null;
   }
 
-  async createUser(userData: CreateUserDto): Promise<User> {
-    const existingUser = await this.findUserByEmail(userData.email);
+  async create(userData: CreateUserDto): Promise<User> {
+    const existingUser = await this.findOneByEmail(userData.email);
     if (existingUser) {
       throw new ConflictException(`user email already in use`);
     }
@@ -65,7 +66,7 @@ export class UsersService {
     } else if (loginProvider === 'GOOGLE') {
       user = await this.createGoogleUser(userData);
     }
-    console.log(user);
+
     return user;
   }
 }
