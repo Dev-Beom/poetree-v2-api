@@ -1,5 +1,5 @@
-import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
-import { LoginProvider } from '../../utils/utils';
+import { IsOptional, IsString } from 'class-validator';
+import { LoginProvider } from 'src/utils/constants';
 
 export class CreateUserDto {
   @IsString()
