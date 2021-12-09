@@ -66,7 +66,7 @@ export class Item extends BaseEntity {
   @ManyToOne(() => Category, (category) => category.items)
   category: Category;
 
-  @ManyToOne(() => ItemCode, (itemCode) => itemCode.items, { nullable: true })
+  @ManyToOne(() => ItemCode, (itemCode) => itemCode.items)
   itemCode: ItemCode;
 
   @ManyToOne(() => User, (user) => user.items)
