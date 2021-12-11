@@ -21,6 +21,7 @@ import { TransferRequestsModule } from './transfer-requests/transfer-requests.mo
 import { TransfersModule } from './transfers/transfers.module';
 import { UnregisteredUsersModule } from './unregistered-users/unregistered-users.module';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { UsersModule } from './users/users.module';
     TransfersModule,
     UnregisteredUsersModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
