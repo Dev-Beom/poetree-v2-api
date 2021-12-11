@@ -46,6 +46,9 @@ export class User extends BaseEntity {
   @Column('varchar', { default: 'local' })
   loginProvider: string;
 
+  @Column('varchar', { nullable: true })
+  imageUrl: string;
+
   @Column('varchar', { unique: true, nullable: true })
   ci: string;
 
