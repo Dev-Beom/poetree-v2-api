@@ -5,6 +5,7 @@ import { UsersModule } from 'src/users/users.module';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
 import dotenv from 'dotenv';
+import { JwtStrategy } from './jwt.strategy';
 
 dotenv.config();
 @Module({
@@ -16,7 +17,7 @@ dotenv.config();
       signOptions: { expiresIn: '1d' },
     }),
   ],
-  providers: [AuthService, LocalStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
