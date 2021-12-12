@@ -22,9 +22,10 @@ import { TransfersModule } from './transfers/transfers.module';
 import { UnregisteredUsersModule } from './unregistered-users/unregistered-users.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-
+import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot(config),
     AdminUsersModule,
     BanksModule,
