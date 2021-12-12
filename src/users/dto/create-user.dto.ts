@@ -1,5 +1,4 @@
 import { IsOptional, IsString } from 'class-validator';
-import { LoginProvider } from 'src/utils/constants';
 
 export class CreateUserDto {
   @IsString()
@@ -15,7 +14,4 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   readonly description: string;
-
-  @IsString()
-  readonly loginProvider: LoginProvider;
 }
