@@ -17,9 +17,14 @@ export class UsersService {
   ) {}
 
   async findOneById(id: number): Promise<User> {
-    const user = await this.userRepository.findOne(id);
+    /// findOne 수정
+    const user = await this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
     if (!user) {
-      throw new NotFoundException(`user id ${id} not found`);
+      throw new NotFoundException('user not found');
     }
     return user;
   }
@@ -55,7 +60,7 @@ export class UsersService {
     if (existingUser) {
       throw new ConflictException(`user email already in use`);
     }
-    const loginProvider = LoginProvider[userData.loginProvider];
+    const loginProvider = LoginProvider['local'];
 
     let user;
 
@@ -67,6 +72,18 @@ export class UsersService {
       user = await this.createGoogleUser(userData);
     }
 
+    return user;
+  }
+
+  async getUserPofile(id: number): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { id },
+      select: ['id', 'email', 'name', 'description', 'imageUrl'],
+      relations: ['items'],
+    });
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
     return user;
   }
 }
