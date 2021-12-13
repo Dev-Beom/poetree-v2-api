@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { Post } from 'src/posts/entities/post.entity';
 
-@Entity({ schema: 'crow', name: 'categories' })
+@Entity({ schema: 'poetree', name: 'categories' })
 export class Category extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
@@ -18,7 +18,7 @@ export class Category extends BaseEntity {
   code: string;
 
   @Column({ type: 'varchar', length: 30 })
-  name: number;
+  name: string;
 
   @Column({ type: 'boolean', default: 1 })
   isActive: boolean;

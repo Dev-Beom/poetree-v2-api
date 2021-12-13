@@ -3,22 +3,21 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Post } from 'src/posts/entities/post.entity';
+import { Hashtag } from 'src/hashtags/entities/hashtag.entity';
 
-@Entity({ schema: 'poetree', name: 'comments' })
-export class Category extends BaseEntity {
+@Entity({ schema: 'poetree', name: 'categories' })
+export class PostHashtag extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
   @Column({ type: 'varchar', length: 30 })
-  code: string;
-
-  @Column({ type: 'varchar', length: 30 })
-  name: number;
+  tag: string;
 
   @Column({ type: 'boolean', default: 1 })
   isActive: boolean;
@@ -29,6 +28,9 @@ export class Category extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => Post, (post) => post.category)
-  posts: Post[];
+  @ManyToOne(() => Post, (post) => post.postHashtags)
+  post: Post;
+
+  @ManyToOne(() => Hashtag, (hashtag) => hashtag.postHashtags)
+  hashtag: Hashtag;
 }

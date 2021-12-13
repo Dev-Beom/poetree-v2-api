@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ schema: 'crow', name: 'unregisteredUsers' })
+@Entity({ schema: 'poetree', name: 'unregisteredUsers' })
 export class UnregisteredUser extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;

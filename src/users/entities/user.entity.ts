@@ -9,11 +9,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-
 import { BlockedUser } from 'src/blocked-users/entities/blocked-user.entity';
 import { UnregisteredUser } from 'src/unregistered-users/entities/unregistered-user.entity';
 
-@Entity({ schema: 'crow', name: 'users' })
+@Entity({ schema: 'poetree', name: 'users' })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;

@@ -1,0 +1,24 @@
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { PostHashtag } from 'src/post-hashtags/entities/postHashtag.entity';
+@Entity({ schema: 'poetree', name: 'posts' })
+export class Hashtag extends BaseEntity {
+  @PrimaryGeneratedColumn({ type: 'int' })
+  id: number;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @OneToMany(() => PostHashtag, (postHashtag) => postHashtag.hashtag)
+  postHashtags: PostHashtag;
+}
