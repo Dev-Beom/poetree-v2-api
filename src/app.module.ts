@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AdminUsersModule } from './admin-users/admin-users.module';
 import { AppController } from './app.controller';
@@ -23,6 +23,7 @@ import { UnregisteredUsersModule } from './unregistered-users/unregistered-users
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+
 import { PostsModule } from './posts/posts.module';
 import { FollowsModule } from './follows/follows.module';
 import { EventModule } from './event/event.module';
@@ -31,6 +32,9 @@ import { LikesModule } from './likes/likes.module';
 import { HashtagsModule } from './hashtags/hashtags.module';
 import { PostHashtagsModule } from './post-hashtags/post-hashtags.module';
 import { CommentsModule } from './comments/comments.module';
+
+import { LoggerMiddleware } from './middlewares/logger.middleware';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -66,4 +70,8 @@ import { CommentsModule } from './comments/comments.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): any {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
