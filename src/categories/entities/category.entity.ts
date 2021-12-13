@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Item } from 'src/items/entities/item.entity';
+import { Post } from 'src/posts/entities/post.entity';
 
 @Entity({ schema: 'crow', name: 'categories' })
 export class Category extends BaseEntity {
@@ -29,6 +29,6 @@ export class Category extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => Item, (item) => item.category)
-  items: Item[];
+  @OneToMany(() => Post, (post) => post.category)
+  posts: Post[];
 }
