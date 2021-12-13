@@ -9,16 +9,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Bank } from 'src/banks/entities/bank.entity';
+
 import { BlockedUser } from 'src/blocked-users/entities/blocked-user.entity';
-import { Company } from 'src/companies/entities/company.entity';
-import { FundRequest } from 'src/fund-requests/entities/fund-request.entity';
-import { Fund } from 'src/funds/entities/fund.entity';
-import { ItemReview } from 'src/item-reviews/entities/item-review.entity';
-import { TransferRequest } from 'src/transfer-requests/entities/transfer-request.entity';
-import { Transfer } from 'src/transfers/entities/transfer.entity';
 import { UnregisteredUser } from 'src/unregistered-users/entities/unregistered-user.entity';
-import { Item } from 'src/items/entities/item.entity';
 
 @Entity({ schema: 'crow', name: 'users' })
 export class User extends BaseEntity {
@@ -49,18 +42,6 @@ export class User extends BaseEntity {
   @Column('varchar', { length: 200, nullable: true })
   imageUrl: string;
 
-  @Column('varchar', { unique: true, nullable: true })
-  ci: string;
-
-  @Column({ unique: true, nullable: true })
-  di: string;
-
-  @Column({ unique: true, nullable: true })
-  accountNumber: number;
-
-  @Column({ nullable: true })
-  accountName: string;
-
   @Column('int', { default: 0 })
   point: number;
 
@@ -70,9 +51,6 @@ export class User extends BaseEntity {
   @Column({ default: false })
   isPush: boolean;
 
-  @Column({ default: false })
-  isSeller: boolean;
-
   @CreateDateColumn()
   createdAt: Date;
 
@@ -81,12 +59,6 @@ export class User extends BaseEntity {
 
   @DeleteDateColumn({ nullable: true })
   deletedAt: Date;
-
-  @ManyToOne(() => Bank, (bank) => bank.users, { nullable: true })
-  bank: Bank;
-
-  @ManyToOne(() => Company, (company) => company.users, { nullable: true })
-  company: Company;
 
   @ManyToOne(
     () => UnregisteredUser,
@@ -98,23 +70,8 @@ export class User extends BaseEntity {
   @OneToMany(() => BlockedUser, (blockedUser) => blockedUser.user)
   blockedUsers: BlockedUser[];
 
-  @OneToMany(() => Fund, (fund) => fund.user)
-  funds: Fund[];
-
-  @OneToMany(() => ItemReview, (itemReview) => itemReview.user)
-  itemReviews: ItemReview[];
-
-  @OneToMany(() => FundRequest, (fundRequest) => fundRequest.user)
-  fundRequests: FundRequest[];
-
-  @OneToMany(() => TransferRequest, (transferRequest) => transferRequest.user)
-  transferRequests: TransferRequest[];
-
-  @OneToMany(() => Transfer, (transfer) => transfer.user)
-  transfers: Transfer[];
-
-  @OneToMany(() => Item, (item) => item.user)
-  items: Item[];
+  @OneToMany(() => Post, (post) => post.user)
+  posts: Post[];
 
   @OneToMany(
     () => UnregisteredUser,

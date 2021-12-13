@@ -18,18 +18,6 @@ export class UnregisteredUser extends BaseEntity {
   @Column({ type: 'varchar', length: 30 })
   name: string;
 
-  @Column('varchar', { unique: true, nullable: true })
-  ci: string;
-
-  @Column({ nullable: true })
-  accountName: string;
-
-  @Column({ unique: true, nullable: true })
-  accountNumber: number;
-
-  @Column({ type: 'varchar' })
-  bankId: string;
-
   @Column()
   registeredAt: Date;
 

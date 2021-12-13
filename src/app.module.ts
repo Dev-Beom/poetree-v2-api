@@ -23,6 +23,14 @@ import { UnregisteredUsersModule } from './unregistered-users/unregistered-users
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { PostsModule } from './posts/posts.module';
+import { FollowsModule } from './follows/follows.module';
+import { EventModule } from './event/event.module';
+import { EventsModule } from './events/events.module';
+import { LikesModule } from './likes/likes.module';
+import { HashtagsModule } from './hashtags/hashtags.module';
+import { PostHashtagsModule } from './post-hashtags/post-hashtags.module';
+import { CommentsModule } from './comments/comments.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -46,6 +54,14 @@ import { ConfigModule } from '@nestjs/config';
     UnregisteredUsersModule,
     UsersModule,
     AuthModule,
+    PostsModule,
+    FollowsModule,
+    EventModule,
+    EventsModule,
+    LikesModule,
+    HashtagsModule,
+    PostHashtagsModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

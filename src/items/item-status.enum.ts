@@ -1,7 +1,0 @@
-export enum ItemStatus {
-  REGISTERED = 'REGISTERED',
-  REVIEW = 'REVIEW',
-  PROCEEDING = 'PROCEEDING',
-  SUCCESS = 'SUCCESS',
-  FAILURE = 'FAILURE',
-}
