@@ -11,7 +11,7 @@ import {
 
 import { BlockedUser } from 'src/blocked-users/entities/blocked-user.entity';
 
-@Entity({ schema: 'crow', name: 'adminUsers' })
+@Entity({ schema: 'poetree', name: 'adminUsers' })
 export class AdminUser extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;

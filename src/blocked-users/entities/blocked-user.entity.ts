@@ -9,7 +9,7 @@ import {
 import { User } from 'src/users/entities/user.entity';
 import { AdminUser } from 'src/admin-users/entities/admin-user.entity';
 
-@Entity({ schema: 'crow', name: 'blockedUsers' })
+@Entity({ schema: 'poetree', name: 'blockedUsers' })
 export class BlockedUser extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
