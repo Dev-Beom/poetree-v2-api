@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import { UserRepository } from './users.repository';
-import { hashPassword, LoginProvider } from '../utils/utils';
+import { hashPassword, LoginProvider } from '../common/utils/utils';
 
 @Injectable()
 export class UsersService {
@@ -17,12 +17,12 @@ export class UsersService {
   ) {}
 
   async findOneById(id: number): Promise<User> {
-    /// findOne 수정
     const user = await this.userRepository.findOne({
       where: {
         id,
       },
     });
+
     if (!user) {
       throw new NotFoundException('user not found');
     }
@@ -47,10 +47,6 @@ export class UsersService {
     return newUser;
   }
 
-  async createKakaoUser(userData: CreateUserDto) {
-    return null;
-  }
-
   async createGoogleUser(userData: CreateUserDto) {
     return null;
   }
@@ -60,17 +56,8 @@ export class UsersService {
     if (existingUser) {
       throw new ConflictException(`user email already in use`);
     }
-    const loginProvider = LoginProvider['local'];
 
-    let user;
-
-    if (loginProvider === 'LOCAL') {
-      user = await this.createLocalUser(userData);
-    } else if (loginProvider === 'KAKAO') {
-      user = await this.createKakaoUser(userData);
-    } else if (loginProvider === 'GOOGLE') {
-      user = await this.createGoogleUser(userData);
-    }
+    const user = await this.createLocalUser(userData);
 
     return user;
   }
