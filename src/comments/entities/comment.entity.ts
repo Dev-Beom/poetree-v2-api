@@ -3,11 +3,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Post } from 'src/posts/entities/post.entity';
+import { User } from 'src/users/entities/user.entity';
 
 @Entity({ schema: 'poetree', name: 'comments' })
 export class Comment extends BaseEntity {
@@ -26,6 +28,9 @@ export class Comment extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => Post, (post) => post.category)
-  posts: Post[];
+  @ManyToOne(() => User, (user) => user.comments)
+  user: User;
+
+  @ManyToOne(() => Post, (post) => post.comments)
+  post: Post;
 }

@@ -9,10 +9,11 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Category } from 'src/categories/entities/category.entity';
-import { HashtagsController } from 'src/hashtags/hashtags.controller';
 import { PostHashtag } from 'src/post-hashtags/entities/postHashtag.entity';
 import { User } from 'src/users/entities/user.entity';
 import { PostLike } from 'src/post-likes/entities/post-like.entity';
+import { Comment } from 'src/comments/entities/comment.entity';
+
 @Entity({ schema: 'poetree', name: 'posts' })
 export class Post extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
@@ -50,4 +51,7 @@ export class Post extends BaseEntity {
 
   @OneToMany(() => PostLike, (postLike) => postLike.post)
   postLikes: PostLike[];
+
+  @OneToMany(() => Comment, (comment) => comment.post)
+  comments: Comment[];
 }

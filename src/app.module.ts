@@ -12,7 +12,6 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { PostsModule } from './posts/posts.module';
 import { FollowsModule } from './follows/follows.module';
-import { EventsModule } from './events/events.module';
 import { HashtagsModule } from './hashtags/hashtags.module';
 import { PostHashtagsModule } from './post-hashtags/post-hashtags.module';
 import { CommentsModule } from './comments/comments.module';
@@ -31,7 +30,6 @@ import { PostLikesModule } from './post-likes/post-likes.module';
     AuthModule,
     PostsModule,
     FollowsModule,
-    EventsModule,
     HashtagsModule,
     PostHashtagsModule,
     CommentsModule,
