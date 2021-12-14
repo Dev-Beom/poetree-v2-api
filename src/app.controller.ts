@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { ApiBody, ApiOperation } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
@@ -17,6 +18,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @ApiOperation({ summary: '로그인' })
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   async login(@Request() req) {
