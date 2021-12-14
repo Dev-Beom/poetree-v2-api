@@ -13,6 +13,12 @@ export class Hashtag extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
+  @Column({ type: 'varchar', length: 30 })
+  tag: string;
+
+  @Column({ type: 'varchar', length: 30 })
+  name: number;
+
   @CreateDateColumn()
   createdAt: Date;
 
