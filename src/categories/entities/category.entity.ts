@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Post } from 'src/posts/entities/post.entity';
+import { Photo } from 'src/photos/entities/photo.entity';
 
 @Entity({ schema: 'poetree', name: 'categories' })
 export class Category extends BaseEntity {
@@ -31,4 +32,7 @@ export class Category extends BaseEntity {
 
   @OneToMany(() => Post, (post) => post.category)
   posts: Post[];
+
+  @OneToMany(() => Photo, (photo) => photo.category)
+  photos: Photo[];
 }

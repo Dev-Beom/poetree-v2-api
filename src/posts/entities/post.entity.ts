@@ -13,6 +13,7 @@ import { PostHashtag } from 'src/post-hashtags/entities/postHashtag.entity';
 import { User } from 'src/users/entities/user.entity';
 import { PostLike } from 'src/post-likes/entities/post-like.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
+import { Photo } from 'src/photos/entities/photo.entity';
 
 @Entity({ schema: 'poetree', name: 'posts' })
 export class Post extends BaseEntity {
@@ -29,7 +30,7 @@ export class Post extends BaseEntity {
   views: number;
 
   @Column({ type: 'varchar', length: 30 })
-  name: number;
+  name: string;
 
   @Column({ type: 'boolean', default: 1 })
   isActive: boolean;
@@ -45,6 +46,9 @@ export class Post extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.posts)
   user: User;
+
+  @ManyToOne(() => Photo, (photo) => photo.posts)
+  photo: Photo;
 
   @OneToMany(() => PostHashtag, (postHashtag) => postHashtag.post)
   postHashtags: PostHashtag;
