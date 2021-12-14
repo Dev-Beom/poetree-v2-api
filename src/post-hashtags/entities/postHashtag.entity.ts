@@ -11,7 +11,7 @@ import {
 import { Post } from 'src/posts/entities/post.entity';
 import { Hashtag } from 'src/hashtags/entities/hashtag.entity';
 
-@Entity({ schema: 'poetree', name: 'categories' })
+@Entity({ schema: 'poetree', name: 'postHashtags' })
 export class PostHashtag extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;

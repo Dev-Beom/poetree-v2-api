@@ -15,6 +15,7 @@ import { UnregisteredUser } from 'src/unregistered-users/entities/unregistered-u
 import { Post } from 'src/posts/entities/post.entity';
 import { Follow } from 'src/follows/entities/follow.entity';
 import { PostLike } from 'src/post-likes/entities/post-like.entity';
+import { Comment } from 'src/comments/entities/comment.entity';
 @Entity({ schema: 'poetree', name: 'users' })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
@@ -90,4 +91,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => PostLike, (postLike) => postLike.user)
   postLikes: PostLike[];
+
+  @OneToMany(() => Comment, (comment) => comment.user)
+  comments: Comment[];
 }
