@@ -3,11 +3,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { PostHashtag } from 'src/post-hashtags/entities/postHashtag.entity';
+
 @Entity({ schema: 'poetree', name: 'hashtags' })
 export class Hashtag extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
@@ -17,7 +19,7 @@ export class Hashtag extends BaseEntity {
   tag: string;
 
   @Column({ type: 'varchar', length: 30 })
-  name: number;
+  name: string;
 
   @CreateDateColumn()
   createdAt: Date;

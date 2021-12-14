@@ -17,6 +17,7 @@ import { PostHashtagsModule } from './post-hashtags/post-hashtags.module';
 import { CommentsModule } from './comments/comments.module';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { PostLikesModule } from './post-likes/post-likes.module';
+import { PhotosModule } from './photos/photos.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { PostLikesModule } from './post-likes/post-likes.module';
     PostHashtagsModule,
     CommentsModule,
     PostLikesModule,
+    PhotosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
