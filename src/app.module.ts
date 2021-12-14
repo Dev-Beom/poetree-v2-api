@@ -13,11 +13,11 @@ import { ConfigModule } from '@nestjs/config';
 import { PostsModule } from './posts/posts.module';
 import { FollowsModule } from './follows/follows.module';
 import { EventsModule } from './events/events.module';
-import { LikesModule } from './likes/likes.module';
 import { HashtagsModule } from './hashtags/hashtags.module';
 import { PostHashtagsModule } from './post-hashtags/post-hashtags.module';
 import { CommentsModule } from './comments/comments.module';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { PostLikesModule } from './post-likes/post-likes.module';
 
 @Module({
   imports: [
@@ -32,10 +32,10 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
     PostsModule,
     FollowsModule,
     EventsModule,
-    LikesModule,
     HashtagsModule,
     PostHashtagsModule,
     CommentsModule,
+    PostLikesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

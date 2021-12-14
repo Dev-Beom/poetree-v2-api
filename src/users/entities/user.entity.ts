@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  Like,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -11,7 +12,9 @@ import {
 } from 'typeorm';
 import { BlockedUser } from 'src/blocked-users/entities/blocked-user.entity';
 import { UnregisteredUser } from 'src/unregistered-users/entities/unregistered-user.entity';
-
+import { Post } from 'src/posts/entities/post.entity';
+import { Follow } from 'src/follows/entities/follow.entity';
+import { PostLike } from 'src/post-likes/entities/post-like.entity';
 @Entity({ schema: 'poetree', name: 'users' })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
@@ -66,6 +69,12 @@ export class User extends BaseEntity {
   )
   unregisteredUser: UnregisteredUser;
 
+  @OneToMany(() => Follow, (follow) => follow.follower)
+  followers: Follow[];
+
+  @OneToMany(() => Follow, (follow) => follow.following)
+  followings: Follow[];
+
   @OneToMany(() => BlockedUser, (blockedUser) => blockedUser.user)
   blockedUsers: BlockedUser[];
 
@@ -78,4 +87,7 @@ export class User extends BaseEntity {
     { nullable: true },
   )
   unregisteredUsers: UnregisteredUser[];
+
+  @OneToMany(() => PostLike, (postLike) => postLike.user)
+  postLikes: PostLike[];
 }

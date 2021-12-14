@@ -11,6 +11,8 @@ import {
 import { Category } from 'src/categories/entities/category.entity';
 import { HashtagsController } from 'src/hashtags/hashtags.controller';
 import { PostHashtag } from 'src/post-hashtags/entities/postHashtag.entity';
+import { User } from 'src/users/entities/user.entity';
+import { PostLike } from 'src/post-likes/entities/post-like.entity';
 @Entity({ schema: 'poetree', name: 'posts' })
 export class Post extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
@@ -40,6 +42,12 @@ export class Post extends BaseEntity {
   @ManyToOne(() => Category, (category) => category.posts)
   category: Category;
 
+  @ManyToOne(() => User, (user) => user.posts)
+  user: User;
+
   @OneToMany(() => PostHashtag, (postHashtag) => postHashtag.post)
   postHashtags: PostHashtag;
+
+  @OneToMany(() => PostLike, (postLike) => postLike.post)
+  postLikes: PostLike[];
 }

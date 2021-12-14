@@ -1,24 +1,18 @@
 import {
   BaseEntity,
-  Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Post } from 'src/posts/entities/post.entity';
+import { User } from 'src/users/entities/user.entity';
 
-@Entity({ schema: 'poetree', name: 'comments' })
-export class Comment extends BaseEntity {
+@Entity({ schema: 'poetree', name: 'postLikes' })
+export class PostLike extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
-
-  @Column({ type: 'varchar', length: 30 })
-  commenter: string;
-
-  @Column('text')
-  comment: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -26,6 +20,9 @@ export class Comment extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => Post, (post) => post.category)
-  posts: Post[];
+  @ManyToOne(() => Post, (post) => post.postLikes)
+  post: Post;
+
+  @ManyToOne(() => User, (user) => user.postLikes)
+  user: User;
 }
