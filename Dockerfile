@@ -1,15 +1,13 @@
-FROM node:14 AS builder
+FROM node:12 
+
 WORKDIR /app
 
-COPY . .
+ADD package.json /app/package.json
 
 RUN npm install
-RUN npm run build
 
-FROM node:14-alpine
-WORKDIR /app
+ADD . /app
 
-COPY --from=builder /app ./
+EXPOSE 3000
 
-CMD ["npm", "run", "start:prod"]
-
+CMD ["npm", "run", "start"]
