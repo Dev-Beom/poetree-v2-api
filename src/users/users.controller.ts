@@ -13,7 +13,13 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { User } from './entities/user.entity';
-import { ApiBody, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('Users')
 @Controller('users')
@@ -24,6 +30,7 @@ export class UsersController {
     summary: '프로필 조회',
     description: '사용자 프로필을 조회한다.',
   })
+  @ApiQuery({ name: 'id', type: Number })
   @UseGuards(JwtAuthGuard)
   @Get('/profile')
   findUserById(@Query('id') id: number): Promise<User> {
