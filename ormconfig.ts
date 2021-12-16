@@ -4,17 +4,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 const config: TypeOrmModuleOptions = {
   type: 'mysql',
-  host: 'localhost',
+  host: process.env.RDS_ENDPOINT,
   port: 3306,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+  username: process.env.RDS_USERNAME,
+  password: process.env.RDS_PASSWORD,
+  database: process.env.RDS_DATABASE,
   entities: [__dirname + '/**/*.entity.ts'],
   migrations: [__dirname + '/src/migrations/*.ts'],
   cli: { migrationsDir: 'src/migrations' },
   autoLoadEntities: true,
   charset: 'utf8mb4',
-  synchronize: false,
+  synchronize: true,
   logging: true,
   keepConnectionAlive: true,
 };

@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BlockedUsersModule } from './blocked-users/blocked-users.module';
 import { CategoriesModule } from './categories/categories.module';
-import config from './ormconfig';
+import config from '../ormconfig';
 import { UnregisteredUsersModule } from './unregistered-users/unregistered-users.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
