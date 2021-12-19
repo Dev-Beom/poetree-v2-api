@@ -8,12 +8,12 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Category } from 'src/categories/entities/category.entity';
-import { PostHashtag } from 'src/post-hashtags/entities/postHashtag.entity';
-import { User } from 'src/users/entities/user.entity';
-import { PostLike } from 'src/post-likes/entities/post-like.entity';
-import { Comment } from 'src/comments/entities/comment.entity';
-import { Photo } from 'src/photos/entities/photo.entity';
+import { Category } from 'src/entities/category.entity';
+import { PostHashtag } from 'src/entities/postHashtag.entity';
+import { User } from 'src/entities/user.entity';
+import { PostLike } from 'src/entities/post-like.entity';
+import { Comment } from 'src/entities/comment.entity';
+import { Photo } from 'src/entities/photo.entity';
 
 @Entity({ schema: 'poetree', name: 'posts' })
 export class Post extends BaseEntity {

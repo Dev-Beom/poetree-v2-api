@@ -2,7 +2,7 @@ import { ConflictException, Injectable } from '@nestjs/common';
 import { PhotoRepository } from './photos.repository';
 import * as AWS from 'aws-sdk';
 import { CategoriesService } from 'src/categories/categories.service';
-import { Photo } from './entities/photo.entity';
+import { Photo } from '../entities/photo.entity';
 
 const s3 = new AWS.S3();
 

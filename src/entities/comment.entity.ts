@@ -8,13 +8,16 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Post } from 'src/posts/entities/post.entity';
-import { User } from 'src/users/entities/user.entity';
+import { Post } from 'src/entities/post.entity';
+import { User } from 'src/entities/user.entity';
 
 @Entity({ schema: 'poetree', name: 'comments' })
 export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
+
+  @Column('int', { name: 'userId' })
+  userId: number;
 
   @Column({ type: 'varchar', length: 30 })
   commenter: string;

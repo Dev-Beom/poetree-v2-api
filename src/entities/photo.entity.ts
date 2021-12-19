@@ -1,5 +1,5 @@
-import { Category } from 'src/categories/entities/category.entity';
-import { Post } from 'src/posts/entities/post.entity';
+import { Category } from 'src/entities/category.entity';
+import { Post } from 'src/entities/post.entity';
 import {
   BaseEntity,
   Column,

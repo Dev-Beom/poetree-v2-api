@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './entities/user.entity';
+import { User } from '../entities/user.entity';
 import { UserRepository } from './users.repository';
 import { hashPassword, LoginProvider } from '../common/utils/utils';
 

@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Post } from 'src/posts/entities/post.entity';
-import { Photo } from 'src/photos/entities/photo.entity';
+import { Post } from 'src/entities/post.entity';
+import { Photo } from 'src/entities/photo.entity';
 
 @Entity({ schema: 'poetree', name: 'categories' })
 export class Category extends BaseEntity {

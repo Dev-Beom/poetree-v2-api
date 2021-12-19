@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { BlockedUser } from 'src/blocked-users/entities/blocked-user.entity';
+import { BlockedUser } from 'src/entities/blocked-user.entity';
 
 @Entity({ schema: 'poetree', name: 'adminUsers' })
 export class AdminUser extends BaseEntity {

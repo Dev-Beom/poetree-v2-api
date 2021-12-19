@@ -8,8 +8,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Post } from 'src/posts/entities/post.entity';
-import { Hashtag } from 'src/hashtags/entities/hashtag.entity';
+import { Post } from 'src/entities/post.entity';
+import { Hashtag } from 'src/entities/hashtag.entity';
 
 @Entity({ schema: 'poetree', name: 'postHashtags' })
 export class PostHashtag extends BaseEntity {

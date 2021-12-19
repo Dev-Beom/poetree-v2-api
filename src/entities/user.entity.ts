@@ -4,18 +4,19 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   Like,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { BlockedUser } from 'src/blocked-users/entities/blocked-user.entity';
-import { UnregisteredUser } from 'src/unregistered-users/entities/unregistered-user.entity';
-import { Post } from 'src/posts/entities/post.entity';
-import { Follow } from 'src/follows/entities/follow.entity';
-import { PostLike } from 'src/post-likes/entities/post-like.entity';
-import { Comment } from 'src/comments/entities/comment.entity';
+import { BlockedUser } from 'src/entities/blocked-user.entity';
+import { UnregisteredUser } from 'src/entities/unregistered-user.entity';
+import { Post } from 'src/entities/post.entity';
+import { Follow } from 'src/entities/follow.entity';
+import { PostLike } from 'src/entities/post-like.entity';
+import { Comment } from 'src/entities/comment.entity';
 @Entity({ schema: 'poetree', name: 'users' })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
@@ -54,6 +55,9 @@ export class User extends BaseEntity {
   @Column({ default: false })
   isPush: boolean;
 
+  @Column('int', { name: 'unregisteredUserId', nullable: true })
+  unregisteredUserId: number | null;
+
   @CreateDateColumn()
   createdAt: Date;
 
@@ -66,7 +70,10 @@ export class User extends BaseEntity {
   @ManyToOne(
     () => UnregisteredUser,
     (unregisteredUser) => unregisteredUser.users,
-    { nullable: true },
+    {
+      onDelete: 'SET NULL',
+      onUpdate: 'CASCADE',
+    },
   )
   unregisteredUser: UnregisteredUser;
 
