@@ -5,6 +5,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -19,14 +20,26 @@ export class Photo extends BaseEntity {
   @Column({ type: 'varchar', length: 30 })
   name: string;
 
+  @Column('int', { name: 'categoryId', nullable: true })
+  categoryId: number | null;
+
+  @Column('text')
+  description: string;
+
   @Column({ type: 'varchar', length: 200 })
   imageUrl: string;
 
   @Column({ type: 'date' })
-  uploadData: string;
+  uploadDate: string;
 
-  @Column('text')
-  description: string;
+  @Column()
+  encoding: string;
+
+  @Column()
+  mimeType: string;
+
+  @Column('decimal', { precision: 10, scale: 2 })
+  size: number;
 
   @Column({ type: 'boolean', default: 0 })
   isActive: boolean;
@@ -37,7 +50,11 @@ export class Photo extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => Category, (category) => category.photos)
+  @ManyToOne(() => Category, (category) => category.photos, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn({ name: 'categoryId', referencedColumnName: 'id' })
   category: Category;
 
   @OneToMany(() => Post, (post) => post.photo)

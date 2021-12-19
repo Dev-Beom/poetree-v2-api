@@ -1,17 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MulterModule } from '@nestjs/platform-express';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CategoriesModule } from 'src/categories/categories.module';
 import { PhotosController } from './photos.controller';
 import { PhotoRepository } from './photos.repository';
 import { PhotosService } from './photos.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([PhotoRepository]),
-    MulterModule.register({
-      dest: './uploads',
-    }),
-  ],
+  imports: [TypeOrmModule.forFeature([PhotoRepository]), CategoriesModule],
   controllers: [PhotosController],
   providers: [PhotosService],
 })

@@ -18,7 +18,6 @@ import { CommentsModule } from './comments/comments.module';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { PostLikesModule } from './post-likes/post-likes.module';
 import { PhotosModule } from './photos/photos.module';
-import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
