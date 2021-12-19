@@ -1,7 +1,9 @@
-import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import 'dotenv/config';
+import { ValidationPipe } from "@nestjs/common";
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
+import { SwaggerModule} from "@nestjs/swagger";
+import { SwaggerConfig } from "./config";
 
 declare const module: any;
 
@@ -9,30 +11,15 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const port = process.env.PORT || 3000;
 
-  const swaggerConfig = new DocumentBuilder()
-    .setTitle('Poetree-api-documents')
-    .setDescription('Poetree API')
-    .setVersion('1.0')
-    .addTag('poetree')
-    .addBearerAuth({
-      type: 'http',
-      scheme: 'bearer',
-      bearerFormat: 'JWT',
-      name: 'JWT',
-      description: 'Enter JWT token',
-      in: 'header',
-    })
-    .build();
-
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, document);
+  const document = SwaggerModule.createDocument(app, SwaggerConfig);
+  SwaggerModule.setup("api", app, document);
 
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
-      transform: true,
-    }),
+      transform: true
+    })
   );
 
   if (module.hot) {
@@ -43,4 +30,5 @@ async function bootstrap() {
   await app.listen(port);
   console.log(`Listening on port ${port}`);
 }
+
 bootstrap();
