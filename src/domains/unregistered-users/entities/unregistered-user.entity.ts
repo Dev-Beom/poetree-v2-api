@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/domains/unregistered-users/entities/unregistered-user.entity.ts
 import { User } from 'src/domains/users/entities/user.entity';
-=======
-import { User } from 'src/entities/user.entity';
->>>>>>> 5d68d576ffd02fcbe39d6a10bc8b4167fecfda51:src/entities/unregistered-user.entity.ts
 import {
   BaseEntity,
   Column,

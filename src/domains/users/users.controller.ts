@@ -12,7 +12,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { User } from '../entities/user.entity';
+import { User } from './entities/user.entity';
 import {
   ApiBody,
   ApiOkResponse,

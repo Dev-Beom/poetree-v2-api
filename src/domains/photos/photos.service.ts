@@ -1,13 +1,8 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { PhotoRepository } from './photos.repository';
 import * as AWS from 'aws-sdk';
-<<<<<<< HEAD:src/domains/photos/photos.service.ts
 import { CategoriesService } from 'src/domains/categories/categories.service';
 import { Photo } from './entities/photo.entity';
-=======
-import { CategoriesService } from 'src/categories/categories.service';
-import { Photo } from '../entities/photo.entity';
->>>>>>> 5d68d576ffd02fcbe39d6a10bc8b4167fecfda51:src/photos/photos.service.ts
 
 const s3 = new AWS.S3();
 

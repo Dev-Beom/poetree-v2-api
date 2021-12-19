@@ -11,21 +11,12 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-<<<<<<< HEAD:src/domains/users/entities/user.entity.ts
 import { BlockedUser } from 'src/domains/blocked-users/entities/blocked-user.entity';
 import { UnregisteredUser } from 'src/domains/unregistered-users/entities/unregistered-user.entity';
 import { Post } from 'src/domains/posts/entities/post.entity';
 import { Follow } from 'src/domains/follows/entities/follow.entity';
 import { PostLike } from 'src/domains/post-likes/entities/post-like.entity';
 import { Comment } from 'src/domains/comments/entities/comment.entity';
-=======
-import { BlockedUser } from 'src/entities/blocked-user.entity';
-import { UnregisteredUser } from 'src/entities/unregistered-user.entity';
-import { Post } from 'src/entities/post.entity';
-import { Follow } from 'src/entities/follow.entity';
-import { PostLike } from 'src/entities/post-like.entity';
-import { Comment } from 'src/entities/comment.entity';
->>>>>>> 5d68d576ffd02fcbe39d6a10bc8b4167fecfda51:src/entities/user.entity.ts
 @Entity({ schema: 'poetree', name: 'users' })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })

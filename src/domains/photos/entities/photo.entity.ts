@@ -1,10 +1,5 @@
-<<<<<<< HEAD:src/domains/photos/entities/photo.entity.ts
 import { Category } from 'src/domains/categories/entities/category.entity';
 import { Post } from 'src/domains/posts/entities/post.entity';
-=======
-import { Category } from 'src/entities/category.entity';
-import { Post } from 'src/entities/post.entity';
->>>>>>> 5d68d576ffd02fcbe39d6a10bc8b4167fecfda51:src/entities/photo.entity.ts
 import {
   BaseEntity,
   Column,

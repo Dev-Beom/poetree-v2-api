@@ -8,14 +8,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-<<<<<<< HEAD:src/domains/post-hashtags/entities/postHashtag.entity.ts
 import { Post } from 'src/domains/posts/entities/post.entity';
 import { Hashtag } from 'src/domains/hashtags/entities/hashtag.entity';
-=======
-import { Post } from 'src/entities/post.entity';
-import { Hashtag } from 'src/entities/hashtag.entity';
->>>>>>> 5d68d576ffd02fcbe39d6a10bc8b4167fecfda51:src/entities/postHashtag.entity.ts
-
 @Entity({ schema: 'poetree', name: 'postHashtags' })
 export class PostHashtag extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
